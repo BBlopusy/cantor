@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link {{ 'active' if active_menu=='home' }}" aria-current="page" href="{{ url_for('index') }}">Home</a>
+          </li>
+          {% if login.is_valid %}
+          <li class="nav-item">
+            <a class="nav-link {{ 'active' if active_menu=='exchange' }}" href="{{ url_for('exchange') }}">Exchange</a>
+          </li>
+          {% endif %}
+          {% if login.is_valid %}
+          <li class="nav-item">
+            <a class="nav-link {{ 'active' if active_menu=='history' }}" href="{{ url_for('history') }}">History</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link {{ 'active' if active_menu=='about' }}" href="#" tabindex="-1" aria aria-disabled="true">About</a>
+          </li>
+          {% if login.is_valid and login.is_admin %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                Users
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{{ url_for('users') }}">Users</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('new_user') }}">New user</a></li>
+              </ul>
+          </li>
+          {% endif %} 
+          {% if not login.is_valid %}
+          <li class="nav-item">
+            <a class="nav-link {{ 'active' if active_menu=='login' }}" href="{{ url_for('login') }}"tabindex="-1">Login</a>
+          </li>
+          {% endif %} 
+          {% if login.is_valid %}
+          <li class="nav item">
+            <a class="nav-link {{ 'active' if active_menu=='logout' }}" href="{{ url_for('logout') }}"tabindex="-1">
+              Logout {{ session['user'] if 'user' in session }}</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Hi
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="cool d-flex justify-content-center h2"> Welcome Minecraft cantor!</div>
+    <div class="cool-2"></div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-2"></div>
+    <div class="col"><img src="{{ url_for('static', filename='alex.png') }}" class="rounded mx-auto d-block"></div>
+    <div class="col-2"></div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-8 with-margin">Cantor for funy &trade; registared in LOPUSY</div>
+    <div class="col-4 with-margin" style="text-align: right">&copy; 2022</div> 
+    </div>
+</div>
+ 
+{% endblock %}
